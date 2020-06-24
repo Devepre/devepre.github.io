@@ -28,7 +28,7 @@ github_username:  devepre
 linkedin_username: serhii-kyrylenko-232189110
 
 # Build settings
-theme: jekyll-theme-cayman
+theme: minima
 plugins:
   - jekyll-feed
 
