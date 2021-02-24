@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Declaring relative size to main screen size for SwiftUI view"
-date:   2020-06-24 07:00:00 +0200
+date:   2021-02-24 07:00:00 +0200
 tags: SwiftUI GeometryReader View
 ---
 `@available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)`
@@ -144,10 +144,8 @@ Thanks for reading.
 
 ---
 
-####
-Source code
+###Source code
 
 You can find [complete project on GitHub](https://github.com/Devepre/blog_sources) under "RelativeViewSize" folder.
 
-####
-Questions or proposals? Reach me out at [Linkedin](https://www.linkedin.com/in/serhii-kyrylenko-232189110)
+###Questions or proposals? Reach me out at [Linkedin](https://www.linkedin.com/in/serhii-kyrylenko-232189110)
