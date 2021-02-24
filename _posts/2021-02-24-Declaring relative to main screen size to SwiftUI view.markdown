@@ -16,6 +16,7 @@ Let's assume some view need to be 60% of main screen width. The very naive imple
 var body: some View {
     GeometryReader { proxy in
         Rectangle()
+            .foregroundColor(.secondary)
             .frame(width: proxy.size.width * 0.6)
     }
 }
