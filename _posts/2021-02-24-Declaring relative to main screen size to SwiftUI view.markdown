@@ -147,6 +147,6 @@ Thanks for reading.
 
 ### Source code
 
-You can find [complete project on GitHub](https://github.com/Devepre/blog_sources) targeting macOS and iOS platforms under **"RelativeViewSize"** folder.
+You can find [complete project on GitHub](https://github.com/Devepre/blog_sources/tree/main/RelativeViewSize) targeting macOS and iOS platforms.
 
 ### Questions or proposals? Reach me out at [Linkedin](https://www.linkedin.com/in/serhii-kyrylenko-232189110)
