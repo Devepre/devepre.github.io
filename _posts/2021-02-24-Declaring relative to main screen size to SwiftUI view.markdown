@@ -144,8 +144,8 @@ Thanks for reading.
 
 ---
 
-###Source code
+### Source code
 
 You can find [complete project on GitHub](https://github.com/Devepre/blog_sources) under "RelativeViewSize" folder.
 
-###Questions or proposals? Reach me out at [Linkedin](https://www.linkedin.com/in/serhii-kyrylenko-232189110)
+### Questions or proposals? Reach me out at [Linkedin](https://www.linkedin.com/in/serhii-kyrylenko-232189110)
