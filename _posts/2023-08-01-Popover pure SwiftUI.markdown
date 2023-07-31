@@ -5,7 +5,7 @@ date:   2023-07-31 05:20:00 +0200
 tags: SwiftUI, Swift
 ---
 Today we will be focusing on presenting Popover using SwiftUI framework.
-Popover is a very common, simple and beautifull system UI element. With the only downside - on compact size iPhone it will be presented as Sheet.
+Popover is a very common, simple and beautifull system UI element. With the only one downside - on compact size iPhone it will be presented as Sheet.
 In a most cases it's not what developer, designer and product manager needs. In order to present Popover as small view, we can choose from bunch of options:
 1. Minimum deployment target iOS 16.4 and we are good to go already
 2. UIKit using `UIPopoverPresentationControllerDelegate` and of course `UIViewRepresentable`
@@ -34,6 +34,7 @@ struct ContentView: View {
 {% endhighlight %}
 
 Output is:
+
 ![Code example](/assets/images/code_00005.png)
 
 2. Taking a lifebuoy in a face of UIKit may be not acceptable if your ultimate goal is multi platform SwiftUI app
@@ -80,11 +81,12 @@ extension View {
 {% endhighlight %}
 
 Output is:
+
 ![Code example](/assets/images/code_00006.gif)
 
-It's really simple and clean solution. May be except one tiny thing named... `ZStack`. Since it can screw up your intention of nested views layout in a very unexpected and not obvious way and not obvious moment of other UI code change.
+It's really simple and clean solution. May be except of one tiny thing named... `ZStack`. Since it can screw up your intention of nested views layout in a very unexpected and not obvious way and not obvious moment of other UI code change.
 
-Another approach would be to use `.overlay` View modifier. Wait, you may say that `.overlay` can't show view that is bigger than source view. That is the big difference between using `ZStack` and `.overlay`, and that is a reson why we were using `ZStack` at a first place. That's right...almost. In fact, if we will think out of bounds and apply `.frame` View mofifier to the popover view, SwiftUI engine will actually do the thing. In that case, app don't need to calculate and manually use position of popover view, which in fact in terms of SwiftUI is just other, visually unrelated view. Instead, app can leverage system implementation and always show popover view visually attached to the source view.
+Another approach would be to use `.overlay` View modifier. Wait, you may say that `.overlay` can't show view that is bigger than source view. That is the big difference between using `ZStack` and `.overlay`, and that is a reson why we were using `ZStack` at a first place. That's right...almost. In fact, if we will think out of bounds and apply `.frame` View mofifier to the popover view, SwiftUI engine will actually do the correct thing. In that case, app don't need to calculate and manually use position of popover view, which in fact in terms of SwiftUI is just other, visually unrelated view. Instead, app can leverage system implementation and always show popover view visually attached to the source view.
 This time there is another challenge - app need to know actual size of popover view. In order to achieve this, let's create another one View modifier. Here is full code:
 
 {% highlight swift %}
@@ -148,8 +150,8 @@ struct ViewSizeReader<V: View>: ViewModifier {
 }
 {% endhighlight %}
 
-This View modifier creates an hidden overlay with a popup view and reads it size via `GeometryReader` embedded as `.background` (otherwise it will screw up view layout). Than this size info is using via Binding in order to set a frame size of the actual popover view.
-One very important note here. Since as we know `.overlay` by default can't show view that is bigger from source view, `ViewSizeReader` View modifier should be attached to a view, that is big enough to host popup view through it's hidden `.overlay`. In this case it's `NavigationView`. Otherwise, if `.bindViewSize` will be attached to the source view, which is smaller than popup view, popup view will have maximum width and height that may be not suitable to display whole content of popover view. Just like this:
+This View modifier creates an hidden overlay with a popup view and reads it size via `GeometryReader` embedded as `.background` (otherwise it will screw up the view layout). Than this size info will be used via Binding in order to set a frame size of the actual popover view.
+One very important note here. Since, as we know, `.overlay` by default can't show view that is bigger from source view, `ViewSizeReader` View modifier should be attached to a view, that is big enough to host popup view through it's hidden `.overlay`. In this case it's `NavigationView`. Otherwise, if `.bindViewSize` will be attached to the source view, which is smaller than popup view, popup view will have maximum width and height of source view. That may be not enough to display whole content of popover view. Just like this:
 
 ![Code example](/assets/images/code_00007.png)
 
